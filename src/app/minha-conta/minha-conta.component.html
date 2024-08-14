@@ -1,0 +1,53 @@
+<app-navbar></app-navbar>
+
+<section class="text-gray-600 body-font">
+    <div class="container px-5 py-24 mx-auto flex flex-wrap">
+
+      <div class="flex flex-wrap -m-4 border-2 rounded-lg border-gray-100 border-opacity-50 bg-gray-200">        
+          <div class="flex mx-auto p-8 flex-col">                        
+            <img class="img-perfil w-64 mx-auto rounded-full" [src]="usuarioFotoPerfil" alt="Foto de Perfil" *ngIf="usuarioFotoPerfil">
+            <h2 class="text-gray-600 text-lg mx-auto title-font font-medium mt-3 mb-3">{{usuarioData.nome}} {{usuarioData.sobrenome}}</h2>
+            <div class="h-0.5 w-1/2 mx-auto mb-3 bg-yellow-400 rounded-full"></div>              
+            <h2 class="text-gray-600 text-lg mx-auto title-font font-medium mb-3">{{usuarioData.email}}</h2>                                        
+          </div>
+      </div>
+
+      <div class="mx-8 my-24 md:my-8 ps-4">
+        <div class="boas-vindas">
+            <h2 class="-mt-16 text-gray-100">Olá</h2>
+            <h3 class="text-gray-100 mb-4">Aqui você pode ver seus dados e editar seu perfil.</h3>
+        </div>
+
+        <div class="dados text-gray-100">
+            <h2 class="mb-3">Meus Dados</h2>
+            <p class="mb-2">Nome: <span class="text-green-400">{{usuarioData.nome}}</span></p>
+            <p class="mb-2">Sobrenome: <span class="text-green-400">{{usuarioData.sobrenome}}</span></p>
+            <p class="mb-2">Data Nascimento: <span class="text-green-400">{{usuarioData.dataNascimento}}</span></p>
+            <p class="mb-2">Email: <span class="text-green-400">{{usuarioData.email}}</span></p>
+            <p class="mb-2">Telefone <span class="text-green-400">{{usuarioData.telefone}}</span></p>            
+        </div>
+
+        <div class="-mx-4">
+            <button class="ms-md-3 inline-flex items-center bg-gray-500 border-0 py-2 px-4 focus:outline-none hover:bg-gray-600 rounded text-gray-100 mb-4 mt-md-4 md:mt-0" routerLink="/atualizar-dados">Atualizar Dados                                       
+            </button>
+
+            <button class="ms-md-3 inline-flex items-center bg-gray-500 border-0 py-2 px-4 focus:outline-none hover:bg-gray-600 rounded text-gray-100 mb-4 mt-md-4 md:mt-0" routerLink="/atualizar-senha">Atualizar senha                            
+            </button>
+
+            <button (click)="onDeleteUser(usuarioID)" class="ms-md-3 inline-flex items-center bg-red-600 border-0 py-2 px-4 focus:outline-none hover:bg-red-700 rounded text-gray-100 mb-4 mt-md-4 md:mt-0">Deletar Conta                            
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 ms-2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
+                </svg>                  
+            </button>
+
+        </div>
+      </div>
+
+      
+        
+      
+
+    </div>
+  </section>
+
+<app-footer></app-footer>

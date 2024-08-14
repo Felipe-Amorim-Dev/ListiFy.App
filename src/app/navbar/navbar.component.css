@@ -1,0 +1,24 @@
+.logo{
+    width: 100px;
+    height: auto;
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    
+}
+
+.BTN-exit{
+    color: white;
+}
+
+.img-perfil{
+    
+    height: auto;
+    border-radius: 50%;    
+}
+
+.hamburger{    
+    position: absolute;
+    top: 30px;
+    right: 30px;
+}

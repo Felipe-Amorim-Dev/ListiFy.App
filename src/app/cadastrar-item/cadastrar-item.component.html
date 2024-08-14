@@ -1,0 +1,74 @@
+<app-navbar></app-navbar>
+<section class="text-gray-400 bg-gray-900 body-font overflow-hidden">
+    <div class="container px-5 py-12 mx-auto">
+      <div class="lg:w-4/5 mx-auto flex flex-wrap">        
+        <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+          <a routerLink="/main" class="btn-voltar bg-yellow-400 hover:bg-yellow-500 p-2 rounded text-gray-900 inline-flex mx-auto mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+            </svg>
+            Voltar ao catálogo                                        
+          </a>
+          <h2 class="text-sm title-font text-gray-500 tracking-widest">ListiFy</h2>
+          <h1 class="text-white text-3xl title-font font-medium mb-1">Cadastro de Item</h1>
+          
+          <form (ngSubmit)="onSubmit()">
+            <div class="mb-2 text-green-600">
+              <strong>{{mensagem_sucesso}}</strong>
+            </div>
+            <div class="mb-2 text-red-600">
+              <strong>{{mensagem_error}}</strong>
+            </div>
+
+            <div class="flex flex-md-row flex-col">
+                <div class="relative mb-4 col">
+                  <label for="titulo" class="leading-7 text-sm text-gray-400">Titulo *</label>
+                  <input [(ngModel)]="model.titulo" required type="text" id="titulo" name="titulo" class="w-full bg-opacity-20 focus:ring-2 focus:ring-yellow-500 rounded border border-gray-600 focus:border-yellow-500 text-gray-700 outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                </div>                
+            </div>
+
+            <div>
+              <div class="relative mb-4 col">
+                <label for="descricao" class="leading-7 text-sm text-gray-400">Descrição</label>
+                <textarea [(ngModel)]="model.descricao" required type="textarea" id="descricao" name="descricao" class="h-40 w-full bg-opacity-20 focus:ring-2 focus:ring-yellow-500 rounded border border-gray-600 focus:border-yellow-500 text-gray-700 outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"></textarea>
+              </div>
+            </div>
+
+            <div class="relative mb-4">
+                <label for="categoria" class="leading-7 text-sm text-gray-400">Categoria *</label>
+                <select [(ngModel)]="model.categoria" required type="text" id="categoria" name="categoria" class="form-select w-full bg-opacity-20 focus:ring-2 focus:ring-yellow-500 rounded border border-gray-600 focus:border-yellow-500 text-gray-700 outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                  <option *ngFor="let categoria of (categoriaEnum | keyvalue)" [value]="categoria.value">{{categoria.key}}</option>
+                </select>
+            </div>
+
+            <div class="flex flex-md-row flex-col">
+                <div class="relative mb-4 me-md-2 col">
+                    <label for="tipo" class="leading-7 text-sm text-gray-400">Tipo *</label>
+                    <select [(ngModel)]="model.tipo" required type="text" id="tipo" name="tipo" class="form-select bg-opacity-20 focus:ring-2 focus:ring-yellow-500 rounded border border-gray-600 focus:border-yellow-500 text-gray-700 outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        <option *ngFor="let tipo of (tipoEnum | keyvalue)" [value]="tipo.value">{{tipo.key}}</option>
+                    </select>
+                </div>
+
+                <div class="relative mb-4 ms-md-2 col">
+                    <label for="dataLancamento" class="leading-7 text-sm text-gray-400">Data de Lançamento</label>
+                    <input [(ngModel)]="model.dataLancamento" required type="date" id="dataLancamento" name="dataLancamento" class="w-full bg-opacity-20 focus:ring-2 focus:ring-yellow-500 rounded border border-gray-600 focus:border-yellow-500 text-gray-700 outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                </div>
+            </div>          
+
+            <div class="col-12 mb-3">              
+              <label for="galeria">Galeria: <span class="text-yellow-500">(Máximo de 5 fotos)</span></label>
+              <input type="file" id="galeria" (change)="onFileSelected($event)" multiple class="form-control">
+            </div>
+
+            <div class="flex">                     
+              <input type="submit" value="Cadastrar" class="flex ml-auto text-white bg-yellow-500 border-0 py-2 px-20 focus:outline-none hover:bg-yellow-600 rounded">            
+            </div>
+          </form>
+         
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <app-footer></app-footer>

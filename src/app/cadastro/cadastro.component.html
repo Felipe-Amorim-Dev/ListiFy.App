@@ -1,0 +1,77 @@
+<app-navbar></app-navbar>
+
+<div class="py-10 bg-gray-900">
+    <div class="container flex flex-col flex-md-row">
+        <form (ngSubmit)="onSubmit()" #imageForm="ngForm" class="my-4 text-gray-400 bg-gray-900 body-font">                    
+            
+            <div class="col me-md-4 bg-gray-800 bg-opacity-50 rounded-lg p-8 flex flex-col">
+                <h2 class="titulo text-white text-lg font-medium title-font mb-4">Cadastro</h2>
+                <h3 class="text-white text-lg font-medium title-font text-center">Preencha o formulário abaixo para começar.</h3>
+                <hr class="m-10">
+
+                <div class="mb-2 text-green-600">
+                    <strong>{{mensagem_sucesso}}</strong>
+                </div>
+
+                <div class="flex flex-md-row flex-col">
+                    <div class="relative mb-4 me-md-2 col">
+                    <label for="nome" class="leading-7 text-sm text-gray-400">Nome</label>
+                    <input [(ngModel)]="model.nome" required type="text" id="nome" name="nome" placeholder="João" class="w-full bg-opacity-20 focus:ring-2 focus:ring-yellow-400 rounded focus:border-yellow-500 text-gray-700 outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                    </div>
+
+                    <div class="relative mb-4 ms-md-2 col">
+                    <label for="sobrenome" class="leading-7 text-sm text-gray-400">Sobrenome</label>
+                    <input [(ngModel)]="model.sobrenome" required type="text" id="sobrenome" name="sobrenome" placeholder="Silva Franco" class="w-full bg-opacity-20 focus:ring-2 focus:ring-yellow-400 rounded focus:border-yellow-500 text-gray-700 outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                    </div>
+                </div>
+
+                <div class="relative mb-4">
+                    <label for="email" class="leading-7 text-sm text-gray-400">Email</label>
+                    <input [(ngModel)]="model.email" required type="email" id="email" name="email" placeholder="joao@gmail.com" class="w-full bg-opacity-20 focus:ring-2 focus:ring-yellow-400 rounded focus:border-yellow-500 text-gray-700 outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                </div>
+
+                <div class="flex flex-md-row flex-col">
+                    <div class="relative mb-4 me-md-2 col">
+                        <label for="dataNascimento" class="leading-7 text-sm text-gray-400">Data de Nascimento</label>
+                        <input [(ngModel)]="model.dataNascimento" required type="date" id="dataNascimento" name="dataNascimento" class="w-full bg-opacity-20 focus:ring-2 focus:ring-yellow-400 rounded focus:border-yellow-500 text-gray-700 outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                    </div>
+
+                    <div class="relative mb-4 ms-md-2 col">
+                        <label for="telefone" class="leading-7 text-sm text-gray-400">Telefone</label>
+                        <input [(ngModel)]="model.telefone" required type="text" id="telefone" name="telefone" placeholder="99999-9999" class="w-full bg-opacity-20 focus:ring-2 focus:ring-yellow-400 rounded focus:border-yellow-500 text-gray-700 outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                    </div>
+                </div>
+
+                <div class="flex flex-md-row flex-col">
+                    <div class="relative mb-4 me-md-2 col">
+                        <label for="senha" class="leading-7 text-sm text-gray-400">Senha</label>
+                        <input [(ngModel)]="model.senha" required type="password" id="senha" name="senha" class="w-full bg-opacity-20 focus:ring-2 focus:ring-yellow-400 rounded focus:border-yellow-500 text-gray-700 outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                    </div>
+
+                    <div class="relative mb-4 ms-md-2 col">
+                        <label for="senhaConfirmacao" class="leading-7 text-sm text-gray-400">Confirme sua senha</label>
+                        <input [(ngModel)]="model.senhaConfirmacao" required type="password" id="senhaConfirmacao" name="senhaConfirmacao" class="w-full bg-opacity-20 focus:ring-2 focus:ring-yellow-400 rounded focus:border-yellow-500 text-gray-700 outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                    </div>
+                </div>
+
+                <div class="col-12 mb-3">
+                    <label for="foto">Foto de perfil de usuário:</label>
+                    <input class="form-control" type="file" (change)="onFileSelected($event)" accept="image/*">
+                </div>
+                
+                <input type="submit" class="col-6 mt-3 mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg" value="Cadastrar">                                        
+                
+                <p class="mt-4 mx-auto">Já possui uma conta? <a class=" link-login text-yellow-500 hover:text-yellow-600" routerLink="/login">Faça o login aqui!</a></p>
+            </div>    
+        </form>
+        <section class="col col-md-6 my-auto pb-5">
+            <article>
+                <h1 class="titulo text-white py-2"><strong class="nome-marca text-green-500">ListiFy</strong> seu catálogo de Coleções</h1>
+                <p class="text-white text-justify px-4 py-2">Nosso sistema foi desenvolvido especialmente para colecionadores apaixonados como você, que desejam organizar e gerenciar suas coleções de itens diversos, como CDs, DVDs, Blu-rays, quadrinhos, revistas, livros e muito mais.</p>
+                <p class="text-white px-4 py-2 text-justify">Crie sua conta agora mesmo e comece a desfrutar de uma nova maneira de gerenciar suas coleções!</p>
+            </article>
+        </section>
+    </div>
+</div>
+
+<app-footer></app-footer>

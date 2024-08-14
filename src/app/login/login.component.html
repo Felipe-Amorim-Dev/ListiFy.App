@@ -1,0 +1,37 @@
+<app-navbar></app-navbar>
+
+<section class="text-gray-600 body-font">
+    <div class="container px-5 py-24 mx-auto flex flex-col lg:flex-row items-center">
+      <div class="w-full lg:w-1/2 col-6 mx-auto text-center text-md-start">
+        <h1 class="titulo title-font font-medium text-green-500">ListiFy</h1>
+        <p class="leading-relaxed text-white my-4 me-4 text-justify">O ListiFy é uma plataforma para criar e gerenciar suas coleções de maneira fácil e intuitiva. Seja para acompanhar e organizar seus CD's, DVD's Revistas, e muito mais.</p>
+      </div>
+      <form [formGroup]="formLogin" (ngSubmit)="onSubmit()" class="w-full lg:w-1/2 col-4 bg-gray-100 rounded-lg p-8 flex flex-col">
+        <h2 class="titulo-form text-gray-900 text-lg font-medium title-font mb-3">Entrar</h2>
+
+            <div class="mb-2 text-danger">
+                <strong>{{ mensagem_Error }}</strong>
+            </div>
+
+        <div class="relative mb-4">
+          <label for="email" class="leading-7 text-sm text-gray-600">Email</label>
+          <input formControlName="email" type="email" id="email" name="email" placeholder="joao@gmail.com" class="w-full bg-white rounded border border-gray-300 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+          <div *ngIf="form.email.touched">
+            <div class="text-danger" *ngIf="form.email.errors.required">Informe um email de usuário.</div>
+          </div>
+        </div>
+
+        <div class="relative mb-4">
+          <label for="senha" class="leading-7 text-sm text-gray-600">Senha</label>
+          <input formControlName="senha" type="password" id="senha" name="senha" class="w-full bg-white rounded border border-gray-300 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+            
+        </div>
+
+        <input type="submit" class="text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg" value="Entrar" [disabled]="!formLogin.valid"/>
+        
+        <p class="mt-4 mx-auto">Já possui uma conta? <a class=" link-cadastro text-green-500 hover:text-yellow-600" routerLink="/cadastro">Cadastre-se aqui!</a></p>
+      </form>
+    </div>
+  </section>
+
+  <app-footer></app-footer>

@@ -1,0 +1,71 @@
+
+
+<div class="mb-2">
+  <strong>{{ mensagem }}</strong>
+</div>
+
+<section class="w-full mx-auto text-gray-400 bg-gray-900 body-font">
+
+    <div class="w-full md:px-5 py-24 mx-auto">
+
+      <div class="px-3 flex flex-col">        
+        
+        <div class="item-count">
+          <h2 class="text-4xl font-medium title-font text-white mb-4">Você tem {{items.length}} Items no seu catálogo.</h2>
+        </div>
+
+        <div class="h-1 bg-gray-800 rounded overflow-hidden">
+          <div class="w-24 h-full bg-indigo-500"></div>
+        </div>
+
+      </div>
+
+      <div class="md:w-full flex flex-col md:flex-row flex-wrap justify-between items-start">
+        <div class="w-full md:basis-1/3 mx-auto" *ngFor="let item of items; let i = index">
+          <div class="w-full flex flex-wrap sm:-m-4 -mb-10 -mt-4">
+            <div class="w-full p-4 sm:mb-0 mb-6">
+              <h2 class="w-full text-4xl font-medium title-font text-white mb-4 mt-5 cursor-pointer">{{item.titulo}}</h2>
+              <input type="hidden" value="{{item.id}}">              
+              <div class="relative w-full h-auto overflow-hidden">
+                <div class="flex transition-transform duration-500 ease-in-out" [style.transform]="'translateX(-' + currentIndex[i] * 100 + '%)'">
+                  <div *ngFor="let foto of item.galeria" class="w-full h-1/2 flex-shrink-0">
+                    <img alt="content" class="border-b-4 border-indigo-500 h-full md:h-1/2 w-auto" 
+                         [src]="'data:image/png;base64,' + foto.foto">
+                  </div>
+                </div>
+                <div class="absolute inset-y-0 left-0 flex items-center">
+                  <button (click)="prevSlide(i, item.galeria.length)" class="m-1 py-2 px-3 bg-gray-700 text-white rounded-full">
+                    &#10094;
+                  </button>
+                </div>
+                <div class="absolute inset-y-0 right-0 flex items-center">
+                  <button (click)="nextSlide(i, item.galeria.length)" class="m-1 py-2 px-3 bg-gray-700 text-white rounded-full">
+                    &#10095;
+                  </button>
+                </div>
+              </div>
+      
+              <div class="flex mt-2">
+                <h3 class="me-2 bg-indigo-500 py-2 px-4 rounded text-yellow-500">{{item.categoria}}</h3>
+                <h3 class="bg-indigo-500 py-2 px-4 rounded text-yellow-500">{{item.tipo}}</h3>
+              </div>
+              <p class="text-base leading-relaxed mt-2">{{item.descricao}}</p>
+              <a [routerLink]="['/atualizar-item', item.id]" class="bg-yellow-400 hover:bg-yellow-500 p-2 rounded text-gray-900 inline-flex items-center mt-3">Editar
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 ms-2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+                </svg>                
+              </a>
+              <a (click)="onDelete(item.id)" class="bg-red-600 hover:bg-red-700 p-2 rounded text-white inline-flex items-center mt-3 ms-3">Deletar
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 ms-2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+                </svg>                
+              </a>
+            </div>            
+          </div>
+        </div>
+      </div>
+      <div *ngIf="mensagem_erro" class="w-full md:w-1/2 alert alert-danger text-center mx-auto">
+        {{ mensagem_erro }}
+      </div>
+    </div>
+  </section>

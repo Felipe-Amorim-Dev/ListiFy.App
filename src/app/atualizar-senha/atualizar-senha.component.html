@@ -1,0 +1,35 @@
+<app-navbar></app-navbar>
+
+<div class="py-10 bg-gray-900">
+    <div class="container flex flex-col flex-md-row">
+        <form (ngSubmit)="onSubmit()" class="col col-md-6 text-gray-400 bg-gray-900 body-font">                    
+            
+            <div class="col me-md-4 bg-gray-800 bg-opacity-50 rounded-lg p-8 flex flex-col">
+                <h2 class="titulo text-white text-lg font-medium title-font mb-4">Cadastro</h2>
+                <h3 class="text-white text-lg font-medium title-font text-center">Preencha o formulário abaixo para começar.</h3>
+                <hr class="m-10">
+
+                <div class="mb-2 text-green-600">
+                    <strong>{{mensagem_sucesso}}</strong>
+                </div>            
+                
+                <div class="flex flex-md-row flex-col">
+                    <div class="relative mb-4 me-md-2 col">
+                        <label for="senha" class="leading-7 text-sm text-gray-400">Senha</label>
+                        <input [(ngModel)]="model.senha" type="password" id="senha" name="senha" class="w-full bg-opacity-20 focus:ring-2 focus:ring-yellow-400 rounded focus:border-yellow-500 text-gray-700 outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                    </div>
+
+                    <div class="relative mb-4 ms-md-2 col">
+                        <label for="senhaConfirmacao" class="leading-7 text-sm text-gray-400">Confirme sua senha</label>
+                        <input [(ngModel)]="model.senhaConfirmacao" type="password" id="senhaConfirmacao" name="senhaConfirmacao" class="w-full bg-opacity-20 focus:ring-2 focus:ring-yellow-400 rounded focus:border-yellow-500 text-gray-700 outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                    </div>
+                </div>                
+                
+                <input type="submit" class="col-6 mt-3 mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg" value="Cadastrar">                                        
+                                
+            </div>    
+        </form>        
+    </div>
+</div>
+
+<app-footer></app-footer>

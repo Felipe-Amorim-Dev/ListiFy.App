@@ -1,0 +1,54 @@
+<app-navbar></app-navbar>
+<section class="mt-4">
+    <form (ngSubmit)="onSubmit()" #imageForm="ngForm" class="w-full md:w-1/3 px-3 mx-auto text-gray-400 bg-gray-900 body-font">                    
+                
+        <div class="col me-md-4 bg-gray-800 bg-opacity-50 rounded-lg p-8 flex flex-col">
+            <h2 class="titulo text-white text-lg font-medium title-font mb-4">Atualizar dados</h2>
+            <h3 class="text-white text-lg font-medium title-font text-center">Preencha os compos abaixo para atualizar seus dados.</h3>
+            <hr class="m-10">
+
+            <div class="mb-2 text-green-600">
+                <strong>{{mensagem_sucesso}}</strong>
+            </div>
+
+            <div class="flex flex-md-row flex-col">
+                <div class="relative mb-4 me-md-2 col">
+                <label for="nome" class="leading-7 text-sm text-gray-400">Nome</label>
+                <input [(ngModel)]="model.nome" type="text" id="nome" name="nome" class="w-full bg-opacity-20 focus:ring-2 focus:ring-yellow-400 rounded focus:border-yellow-500 text-gray-700 outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                </div>
+
+                <div class="relative mb-4 ms-md-2 col">
+                <label for="sobrenome" class="leading-7 text-sm text-gray-400">Sobrenome</label>
+                <input [(ngModel)]="model.sobrenome" required type="text" id="sobrenome" name="sobrenome" class="w-full bg-opacity-20 focus:ring-2 focus:ring-yellow-400 rounded focus:border-yellow-500 text-gray-700 outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                </div>
+            </div>        
+
+            <div class="relative mb-4">
+                <label for="email" class="leading-7 text-sm text-gray-400">Email</label>
+                <input [(ngModel)]="model.email" required type="text" id="email" name="email" class="w-full bg-opacity-20 focus:ring-2 focus:ring-yellow-400 rounded focus:border-yellow-500 text-gray-700 outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+            </div>
+
+            <div class="flex flex-md-row flex-col">
+                <div class="relative mb-4 me-md-2 col">
+                    <label for="dataNascimento" class="leading-7 text-sm text-gray-400">Data de Nascimento</label>
+                    <input [(ngModel)]="model.dataNascimento" required type="date" id="dataNascimento" name="dataNascimento" class="w-full bg-opacity-20 focus:ring-2 focus:ring-yellow-400 rounded focus:border-yellow-500 text-gray-700 outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                </div>
+
+                <div class="relative mb-4 ms-md-2 col">
+                    <label for="telefone" class="leading-7 text-sm text-gray-400">Telefone</label>
+                    <input [(ngModel)]="model.telefone" required type="text" id="telefone" name="telefone" class="w-full bg-opacity-20 focus:ring-2 focus:ring-yellow-400 rounded focus:border-yellow-500 text-gray-700 outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                </div>
+            </div>        
+
+            <div class="col-12 mb-3">
+                <label for="foto">Foto de perfil de usuário:</label>
+                <input class="form-control" type="file" (change)="onFileSelected($event)" accept="image/*">
+            </div>
+            
+            <input type="submit" class="col-6 mt-3 mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg" value="Atualizar">                                        
+                        
+        </div>    
+    </form>
+</section>
+
+<app-footer></app-footer>

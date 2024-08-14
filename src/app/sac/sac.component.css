@@ -1,0 +1,13 @@
+.contact-us{
+    width: 100%;
+    height: 100%;
+    background-image: url("src/assets/IMG/Contact-us.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-attachment: fixed   
+}
+
+.card-contact{
+    box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.7);
+}
