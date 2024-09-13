@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
+import { EncryptedStorageService } from "./EncryptData";
 
 @Injectable({
     providedIn: 'root'
@@ -7,13 +8,13 @@ import { Router } from "@angular/router";
 export class SigninGuard {
     
     constructor(
-        private router: Router
-    ) {
-    }
+        private router: Router,
+        private encrypt: EncryptedStorageService
+    ) {}
 
     canActivate() {
        
-        const auth = sessionStorage.getItem('auth_usuario');
+        const auth = this.encrypt.getItem('auth_usuario');
         if(auth != null) {
             this.router.navigate(['/main']);
             return false;

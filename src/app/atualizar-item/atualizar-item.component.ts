@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { ActivatedRoute } from '@angular/router';
 import { Tipo } from '../Enums/tipo.enum';
 import { Categoria } from '../Enums/categoria.enum';
+import { EncryptedStorageService } from '../_guards/EncryptData';
 
 @Component({
   selector: 'app-atualizar-item',
@@ -26,7 +27,8 @@ export class AtualizarItemComponent implements OnInit {
   constructor(
     private httpClient: HttpClient,
     private spinner: NgxSpinnerService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private encrypt: EncryptedStorageService
   ) {}
 
   ngOnInit(): void {
@@ -37,9 +39,9 @@ export class AtualizarItemComponent implements OnInit {
       this.itemId = params['id'];
     });
     
-    const data = sessionStorage.getItem('auth_usuario');
+    const data = this.encrypt.getItem('auth_usuario');    
     if (data != null) {
-      this.usuarioID = JSON.parse(data).id;
+      this.usuarioID = data.id;
     }
 
     const url = `${environment.listifyItem}/consultar-item-id?usuarioID=${this.usuarioID}&itemId=${this.itemId}`;      

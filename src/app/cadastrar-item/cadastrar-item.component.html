@@ -23,20 +23,20 @@
             <div class="flex flex-md-row flex-col">
                 <div class="relative mb-4 col">
                   <label for="titulo" class="leading-7 text-sm text-gray-400">Titulo *</label>
-                  <input [(ngModel)]="model.titulo" required type="text" id="titulo" name="titulo" class="w-full bg-opacity-20 focus:ring-2 focus:ring-yellow-500 rounded border border-gray-600 focus:border-yellow-500 text-gray-700 outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                  <input [(ngModel)]="model.titulo" required type="text" id="titulo" name="titulo" class="w-full bg-opacity-20 focus:ring-2 focus:ring-yellow-500 rounded border border-gray-600 focus:border-yellow-500 text-gray-700 outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                 </div>                
             </div>
 
             <div>
               <div class="relative mb-4 col">
                 <label for="descricao" class="leading-7 text-sm text-gray-400">Descrição</label>
-                <textarea [(ngModel)]="model.descricao" required type="textarea" id="descricao" name="descricao" class="h-40 w-full bg-opacity-20 focus:ring-2 focus:ring-yellow-500 rounded border border-gray-600 focus:border-yellow-500 text-gray-700 outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"></textarea>
+                <textarea [(ngModel)]="model.descricao" required type="textarea" id="descricao" name="descricao" class="h-40 w-full bg-opacity-20 focus:ring-2 focus:ring-yellow-500 rounded border border-gray-600 focus:border-yellow-500 text-gray-700 outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"></textarea>
               </div>
             </div>
 
             <div class="relative mb-4">
                 <label for="categoria" class="leading-7 text-sm text-gray-400">Categoria *</label>
-                <select [(ngModel)]="model.categoria" required type="text" id="categoria" name="categoria" class="form-select w-full bg-opacity-20 focus:ring-2 focus:ring-yellow-500 rounded border border-gray-600 focus:border-yellow-500 text-gray-700 outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                <select [(ngModel)]="model.categoria" required type="text" id="categoria" name="categoria" class="form-select w-full bg-opacity-20 focus:ring-2 focus:ring-yellow-500 rounded border border-gray-600 focus:border-yellow-500 text-gray-700 outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                   <option *ngFor="let categoria of (categoriaEnum | keyvalue)" [value]="categoria.value">{{categoria.key}}</option>
                 </select>
             </div>
@@ -44,14 +44,14 @@
             <div class="flex flex-md-row flex-col">
                 <div class="relative mb-4 me-md-2 col">
                     <label for="tipo" class="leading-7 text-sm text-gray-400">Tipo *</label>
-                    <select [(ngModel)]="model.tipo" required type="text" id="tipo" name="tipo" class="form-select bg-opacity-20 focus:ring-2 focus:ring-yellow-500 rounded border border-gray-600 focus:border-yellow-500 text-gray-700 outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                    <select [(ngModel)]="model.tipo" required type="text" id="tipo" name="tipo" class="form-select bg-opacity-20 focus:ring-2 focus:ring-yellow-500 rounded border border-gray-600 focus:border-yellow-500 text-gray-700 outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         <option *ngFor="let tipo of (tipoEnum | keyvalue)" [value]="tipo.value">{{tipo.key}}</option>
                     </select>
                 </div>
 
                 <div class="relative mb-4 ms-md-2 col">
                     <label for="dataLancamento" class="leading-7 text-sm text-gray-400">Data de Lançamento</label>
-                    <input [(ngModel)]="model.dataLancamento" required type="date" id="dataLancamento" name="dataLancamento" class="w-full bg-opacity-20 focus:ring-2 focus:ring-yellow-500 rounded border border-gray-600 focus:border-yellow-500 text-gray-700 outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                    <input [(ngModel)]="model.dataLancamento" required type="date" id="dataLancamento" name="dataLancamento" class="w-full bg-opacity-20 focus:ring-2 focus:ring-yellow-500 rounded border border-gray-600 focus:border-yellow-500 text-gray-700 outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                 </div>
             </div>          
 

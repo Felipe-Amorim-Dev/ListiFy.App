@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { environment } from 'src/environments/environment';
+import { EncryptedStorageService } from '../_guards/EncryptData';
+import { Injectable } from "@angular/core";
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-atualizar-senha',
@@ -18,13 +21,15 @@ export class AtualizarSenhaComponent implements OnInit {
 
   constructor(
     private httpClient: HttpClient,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private encrypt: EncryptedStorageService,
+    private route: Router
   ){}
 
   ngOnInit(): void {
-    const data = sessionStorage.getItem('auth_usuario');    
+    const data = this.encrypt.getItem('auth_usuario');    
     if (data != null) {      
-      this.usuarioID = JSON.parse(data).id;                 
+      this.usuarioID = data.id;                 
     }
   }
 
@@ -44,7 +49,7 @@ export class AtualizarSenhaComponent implements OnInit {
     this.httpClient.put(url, formData)
         .subscribe(response => {
           this.mensagem_sucesso = `Senha atualizada com sucesso`;        
-          window.location.href='/minha-conta'          
+          this.route.navigate(['/minha-conta']);
         }).add(() => {
           this.spinner.hide();
         });

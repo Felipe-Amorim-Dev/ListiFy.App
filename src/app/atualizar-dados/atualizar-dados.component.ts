@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { environment } from 'src/environments/environment';
+import { EncryptedStorageService } from '../_guards/EncryptData';
+import { Injectable } from "@angular/core";
+import { Router} from '@angular/router';
 
 interface Usuario{
   nome: string;
@@ -37,7 +40,9 @@ export class AtualizarDadosComponent implements OnInit {
 
   constructor(
     private httpClient: HttpClient,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private encrypt: EncryptedStorageService,
+    private route: Router
   ){}
 
   onFileSelected(event: any){
@@ -47,9 +52,9 @@ export class AtualizarDadosComponent implements OnInit {
   ngOnInit(): void {
     this.spinner.show();
 
-    const data = sessionStorage.getItem('auth_usuario');    
+    const data = this.encrypt.getItem('auth_usuario');    
     if (data != null) {      
-      this.usuarioID = JSON.parse(data).id;                 
+      this.usuarioID = data.id;                 
     }
 
     const getUser = `${environment.listifyUsuario}/usuario?usuarioID=${this.usuarioID}`;
@@ -100,7 +105,7 @@ export class AtualizarDadosComponent implements OnInit {
      this.httpClient.put(url, formData)
         .subscribe(response => {
           this.mensagem_sucesso = `Conta atualizada com sucesso`;        
-          window.location.href='/minha-conta'          
+          this.route.navigate(['/minha-conta']);
         }).add(() => {
           this.spinner.hide();
         });

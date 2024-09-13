@@ -3,6 +3,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { environment } from 'src/environments/environment';
+import { EncryptedStorageService } from '../_guards/EncryptData';
+import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -16,7 +19,9 @@ export class LoginComponent {
 
   constructor(
     private httpClient: HttpClient,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private encrypt: EncryptedStorageService,
+    private route: Router    
   ){}
 
   formLogin = new FormGroup({
@@ -35,8 +40,8 @@ export class LoginComponent {
     this.httpClient.post(environment.listifyUsuario + '/autenticar', this.formLogin.value)
       .subscribe({
         next: (data: any) => {
-          sessionStorage.setItem('auth_usuario', JSON.stringify(data));
-          window.location.href = '/main';
+          this.encrypt.setItem('auth_usuario', data);          
+          this.route.navigate(['/main']);       
         },
         error: (e) => {
           this.mensagem_Error = e.error.message;

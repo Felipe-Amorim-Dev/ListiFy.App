@@ -1,4 +1,4 @@
 export const environment = {    
-    listifyUsuario: 'http://localhost:5274/api/listifyusuario',
-    listifyItem: 'http://localhost:5274/api/listifyitem'       
+    listifyUsuario: 'http://felipeamorimdev-001-site1.dtempurl.com/api/listifyusuario',
+    listifyItem: 'http://felipeamorimdev-001-site1.dtempurl.com/api/listifyitem'        
   };

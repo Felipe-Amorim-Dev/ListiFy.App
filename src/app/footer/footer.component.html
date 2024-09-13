@@ -1,7 +1,10 @@
 <footer class="text-gray-400 bg-gray-900 body-font">
   <div class="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
     <div class="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
-      <a class="flex title-font font-medium items-center justify-center text-white">
+      <a *ngIf="isAuthenticated" routerLink="/main" class="flex title-font font-medium items-center justify-center text-white">
+        <img class="logo" src="assets/IMG/LOGO/ListiFyLogo.png" alt="Logo">      
+      </a>
+      <a *ngIf="!isAuthenticated" routerLink="/home" class="flex title-font font-medium items-center justify-center text-white">
         <img class="logo" src="assets/IMG/LOGO/ListiFyLogo.png" alt="Logo">      
       </a>
       <p class="mt-2 text-sm text-gray-500">Junte-se a nós e descubra como o ListiFy pode transformar a maneira como você organiza seus itens.</p>
@@ -11,10 +14,10 @@
         <h2 class="title-font font-medium text-white tracking-widest text-sm mb-3">LINKS</h2>
         <nav class="list-none mb-10">
           <li>
-            <a class="text-gray-400 hover:text-white">Sobre</a>
+            <a routerLink="/sobre" class="text-gray-400 hover:text-white">Sobre</a>
           </li>
           <li>
-            <a class="text-gray-400 hover:text-white">Fale conosco</a>
+            <a routerLink="/sac" class="text-gray-400 hover:text-white">Fale conosco</a>
           </li>          
         </nav>
       </div>
@@ -23,7 +26,7 @@
   <div class="bg-gray-800 bg-opacity-75">
     <div class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
       <p class="text-gray-400 text-sm text-center sm:text-left">© 2024 ListiFy —
-        <a href="#" rel="noopener noreferrer" class="text-gray-500 ml-1" target="_blank">felipe.f.amorim@outlook.com</a>
+        <span class="text-gray-500 ml-1">felipe.f.amorim@outlook.com</span>
       </p>      
     </div>
   </div>

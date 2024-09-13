@@ -19,12 +19,17 @@
           <div *ngIf="form.email.touched">
             <div class="text-danger" *ngIf="form.email.errors.required">Informe um email de usuário.</div>
           </div>
+          <div *ngIf="form.email.errors?.email">
+            <div class="text-danger">Email inválido</div>
+          </div>
         </div>
 
         <div class="relative mb-4">
           <label for="senha" class="leading-7 text-sm text-gray-600">Senha</label>
           <input formControlName="senha" type="password" id="senha" name="senha" class="w-full bg-white rounded border border-gray-300 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-            
+          <div *ngIf="form.senha.touched">
+            <div class="text-danger" *ngIf="form.senha.errors.required">Informe a senha.</div>
+          </div>  
         </div>
 
         <input type="submit" class="text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg" value="Entrar" [disabled]="!formLogin.valid"/>

@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { formatDate } from '@angular/common';
 import { Tipo } from '../Enums/tipo.enum';
 import { Categoria } from '../Enums/categoria.enum';
+import { EncryptedStorageService } from '../_guards/EncryptData';
 
 @Component({
   selector: 'app-cadastrar-item',
@@ -23,13 +24,14 @@ export class CadastrarItemComponent implements OnInit {
 
   constructor(
     private httpClient: HttpClient,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private encrypt: EncryptedStorageService
   ){}
 
   ngOnInit(): void {
-    const data = sessionStorage.getItem('auth_usuario');    
+    const data = this.encrypt.getItem('auth_usuario');
     if (data != null) {      
-      this.usuarioID = JSON.parse(data).id;                 
+      this.usuarioID = data.id;                 
     }
   } 
 

@@ -1,5 +1,29 @@
 <app-navbar></app-navbar>
 
+<div class="modal-sair" [ngStyle]="{'display': modalVisible ? 'flex': 'none'}">
+
+  <div class="modal-sair-bg bg-gray-800"></div>
+
+  <div class="modal-sair-full w-6/12 md:w-full flex justify-center items-center">
+      <div class="modal-sair-containt bg-gray-800 flex flex-col justify-center items-center p-8">
+          <h1 class="text-white">Deseja realmente sair?</h1>
+          <div class="flex flex-row justify-center items-center">
+              <button (click)="onDeleteUser(usuarioID)" class="inline-flex items-center bg-gray-700 border-0 mx-2 py-2 px-4 focus:outline-none hover:bg-green-600 rounded hover:text-green-400 text-white mb-4 mt-md-4 md:mt-0">Sim 
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                  </svg>                            
+                </button>
+
+                <button (click)="closeModal()" class="inline-flex items-center bg-gray-700 border-0 mx-2 py-2 px-4 focus:outline-none hover:bg-red-600 rounded hover:text-green-400 text-white mb-4 mt-md-4 md:mt-0">Não 
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                  </svg>          
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <section class="text-gray-600 body-font">
     <div class="container px-5 py-24 mx-auto flex flex-wrap">
 
@@ -34,7 +58,7 @@
             <button class="ms-md-3 inline-flex items-center bg-gray-500 border-0 py-2 px-4 focus:outline-none hover:bg-gray-600 rounded text-gray-100 mb-4 mt-md-4 md:mt-0" routerLink="/atualizar-senha">Atualizar senha                            
             </button>
 
-            <button (click)="onDeleteUser(usuarioID)" class="ms-md-3 inline-flex items-center bg-red-600 border-0 py-2 px-4 focus:outline-none hover:bg-red-700 rounded text-gray-100 mb-4 mt-md-4 md:mt-0">Deletar Conta                            
+            <button (click)="showModal()" class="ms-md-3 inline-flex items-center bg-red-600 border-0 py-2 px-4 focus:outline-none hover:bg-red-700 rounded text-gray-100 mb-4 mt-md-4 md:mt-0">Deletar Conta                            
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 ms-2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
                 </svg>                  
@@ -42,12 +66,7 @@
 
         </div>
       </div>
-
-      
-        
-      
-
     </div>
   </section>
-
+  
 <app-footer></app-footer>

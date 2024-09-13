@@ -8,7 +8,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthenticationGuard } from './_guards/authentication.guard';
 import { SigninGuard } from './_guards/signin.guard';
 
-
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
@@ -24,13 +23,11 @@ import { MainComponent } from './main/main.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { SacComponent } from './sac/sac.component';
-import { ModalSairComponent } from './modal-sair/modal-sair.component';
-import { ModalExcluirComponent } from './modal-excluir/modal-excluir.component';
 
-const routes: Routes = [
-  { path : '', pathMatch : 'full', redirectTo : 'login' },
-  {path : 'login', component : LoginComponent, canActivate: [SigninGuard]},
-  {path : 'cadastro', component : CadastroComponent, canActivate: [SigninGuard]},
+const routes: Routes = [  
+  {path : '', component : HomeComponent},
+  {path : 'login', component : LoginComponent},
+  {path : 'cadastro', component : CadastroComponent},
   {path : 'atualizar-dados', component : AtualizarDadosComponent, canActivate: [AuthenticationGuard]},
   {path : 'cadastrar-item', component : CadastrarItemComponent, canActivate: [AuthenticationGuard]},  
   {path : 'atualizar-item/:id', component : AtualizarItemComponent, canActivate: [AuthenticationGuard]},
@@ -60,8 +57,6 @@ const routes: Routes = [
     HomeComponent,
     AboutComponent,
     SacComponent,
-    ModalSairComponent,
-    ModalExcluirComponent
   ],
   imports: [
     BrowserModule,

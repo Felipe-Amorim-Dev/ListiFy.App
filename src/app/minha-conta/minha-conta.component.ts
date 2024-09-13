@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { environment } from 'src/environments/environment';
+import { EncryptedStorageService } from '../_guards/EncryptData';
+import { Injectable } from "@angular/core";
+import { Router} from '@angular/router';
 
 interface Usuario{
   nome: string;
@@ -21,6 +24,7 @@ export class MinhaContaComponent implements OnInit {
 
   mensagem: string = '';
   mensagem_erro: string = ''; 
+  modalVisible = false;
   
   isAuthenticated = false;
   selectedFile: File | null = null;
@@ -38,7 +42,9 @@ export class MinhaContaComponent implements OnInit {
 
   constructor(
     private httpClient: HttpClient,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private encrypt: EncryptedStorageService,
+    private route: Router
   ){}
 
   onFileSelected(event: any){
@@ -48,10 +54,10 @@ export class MinhaContaComponent implements OnInit {
   ngOnInit(): void {
     this.spinner.show();
 
-    const data = sessionStorage.getItem('auth_usuario');    
+    const data = this.encrypt.getItem('auth_usuario');    
     if (data != null) {
       this.isAuthenticated = true;             
-      this.usuarioID = JSON.parse(data).id;      
+      this.usuarioID = data.id;      
     }    
 
     const getUser = `${environment.listifyUsuario}/usuario?usuarioID=${this.usuarioID}`
@@ -69,14 +75,21 @@ export class MinhaContaComponent implements OnInit {
 
   onDeleteUser(usuarioID: string) {    
     const deleteUrl = `${environment.listifyUsuario}/deletar-usuario?usuarioID=${usuarioID}`;    
-    if(window.confirm('Deseja realmente encerrar sua conta?')){
+  
       this.httpClient.delete(deleteUrl)
         .subscribe({
           next: (response) => {          
-            sessionStorage.clear();
-            window.location.href = '/login';
+            this.encrypt.removeItem('auth_usuario');
+            this.route.navigate(['/home']);
           }        
         });
-      }
+  }
+
+  showModal(){
+    this.modalVisible = true;
+  }
+
+  closeModal(){
+    this.modalVisible = false;
   }
 }

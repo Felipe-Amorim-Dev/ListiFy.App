@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
+import { EncryptedStorageService } from "./EncryptData";
 
 @Injectable({
     providedIn: 'root'
@@ -7,22 +8,23 @@ import { Router } from "@angular/router";
 export class AuthenticationGuard {
     
     constructor(
-        private router: Router
+        private router: Router,
+        private encrypt: EncryptedStorageService
     ) {
     }
 
     canActivate() {           
-        const auth = sessionStorage.getItem('auth_usuario');
+        const auth = this.encrypt.getItem('auth_usuario');
         if(auth != null) {
             
-            const data = JSON.parse(auth);
+            const data = auth;
             if(data.accessToken != null) {
                 const dataHoraAcesso = new Date();
                 const dataHoraExpiracao = new Date(data.dataHoraExpiracao as Date);
                 return dataHoraAcesso <= dataHoraExpiracao;                
             }
             else{                
-                sessionStorage.clear();
+                this.encrypt.removeItem('auth_usuario');
                 this.router.navigate(['/login']);
                 return false;
             }

@@ -1,8 +1,12 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy} from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { ChangeDetectorRef } from '@angular/core';
 import { HostListener } from '@angular/core';
+import { EncryptedStorageService } from '../_guards/EncryptData';
+import { Injectable } from "@angular/core";
+import { Router} from '@angular/router';
+import { Subscription } from 'rxjs';
 
 interface Usuario{
   nome: string;
@@ -18,13 +22,17 @@ interface Usuario{
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit{
+export class NavbarComponent implements OnInit, OnDestroy{
+
+  private getUsuario!: Subscription;
 
   isOpen = false;
   isSmallScreen = false;
 
   isAuthenticated: boolean = false;
   usuarioID: string = '';
+
+  modalVisible = false;
 
   usuarioData: Usuario = {
     nome: '',
@@ -39,7 +47,9 @@ export class NavbarComponent implements OnInit{
 
   constructor(
     private httpCliente: HttpClient,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private encrypt: EncryptedStorageService,
+    private route: Router
   ){}
 
   @HostListener('window:resize', ['$event'])
@@ -48,17 +58,17 @@ export class NavbarComponent implements OnInit{
   }
   
   ngOnInit(): void {
-    const data = sessionStorage.getItem('auth_usuario');    
+    const data = this.encrypt.getItem('auth_usuario');    
     if (data != null) {
       this.isAuthenticated = true; 
-      this.usuarioID = JSON.parse(data).id      
+      this.usuarioID = data.id;      
     }
 
     this.checkScreenSize();
 
     const getUser = `${environment.listifyUsuario}/usuario?usuarioID=${this.usuarioID}`
 
-    this.httpCliente.get(getUser)
+    this.getUsuario = this.httpCliente.get(getUser)
       .subscribe({
         next: (response) =>{
           this.usuarioData = response as any;
@@ -72,10 +82,22 @@ export class NavbarComponent implements OnInit{
     this.cdr.detectChanges();
   }
   
-  logout(): void {
-    if (window.confirm('Deseja realmente sair?')) {
-      sessionStorage.clear();      
-      window.location.href = '/login';
+  logout(): void {    
+      this.encrypt.removeItem('auth_usuario');      
+      this.route.navigate(['/login']);
+  }
+
+  showModal(){
+    this.modalVisible = true;
+  }
+
+  closeModal(){
+    this.modalVisible = false;
+  }
+
+  ngOnDestroy(): void {
+    if(this.getUsuario){
+      this.getUsuario.unsubscribe();
     }
   }
 }

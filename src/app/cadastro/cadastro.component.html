@@ -12,54 +12,74 @@
                 <div class="mb-2 text-green-600">
                     <strong>{{mensagem_sucesso}}</strong>
                 </div>
-
+                <div class="mb-2 text-danger">
+                    <strong>{{mensagem_error}}</strong>
+                </div> 
+                <div class="mb-2 text-danger">
+                    <strong>{{mensagem_error_senha}}</strong>
+                </div> 
+                
                 <div class="flex flex-md-row flex-col">
                     <div class="relative mb-4 me-md-2 col">
                     <label for="nome" class="leading-7 text-sm text-gray-400">Nome</label>
                     <input [(ngModel)]="model.nome" required type="text" id="nome" name="nome" placeholder="João" class="w-full bg-opacity-20 focus:ring-2 focus:ring-yellow-400 rounded focus:border-yellow-500 text-gray-700 outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                    <span class="text-sm text-gray-500">*Campo obrigatório.</span>
                     </div>
 
                     <div class="relative mb-4 ms-md-2 col">
                     <label for="sobrenome" class="leading-7 text-sm text-gray-400">Sobrenome</label>
                     <input [(ngModel)]="model.sobrenome" required type="text" id="sobrenome" name="sobrenome" placeholder="Silva Franco" class="w-full bg-opacity-20 focus:ring-2 focus:ring-yellow-400 rounded focus:border-yellow-500 text-gray-700 outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                    <span class="text-sm text-gray-500">*Campo obrigatório.</span>
                     </div>
                 </div>
 
                 <div class="relative mb-4">
                     <label for="email" class="leading-7 text-sm text-gray-400">Email</label>
                     <input [(ngModel)]="model.email" required type="email" id="email" name="email" placeholder="joao@gmail.com" class="w-full bg-opacity-20 focus:ring-2 focus:ring-yellow-400 rounded focus:border-yellow-500 text-gray-700 outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                    <span class="text-sm text-gray-500">*Campo obrigatório.</span>
                 </div>
 
                 <div class="flex flex-md-row flex-col">
                     <div class="relative mb-4 me-md-2 col">
                         <label for="dataNascimento" class="leading-7 text-sm text-gray-400">Data de Nascimento</label>
                         <input [(ngModel)]="model.dataNascimento" required type="date" id="dataNascimento" name="dataNascimento" class="w-full bg-opacity-20 focus:ring-2 focus:ring-yellow-400 rounded focus:border-yellow-500 text-gray-700 outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        <span class="text-sm text-gray-500">*Campo obrigatório.</span>
                     </div>
 
                     <div class="relative mb-4 ms-md-2 col">
                         <label for="telefone" class="leading-7 text-sm text-gray-400">Telefone</label>
                         <input [(ngModel)]="model.telefone" required type="text" id="telefone" name="telefone" placeholder="99999-9999" class="w-full bg-opacity-20 focus:ring-2 focus:ring-yellow-400 rounded focus:border-yellow-500 text-gray-700 outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        <span class="text-sm text-gray-500">*Campo obrigatório.</span>
                     </div>
                 </div>
 
-                <div class="flex flex-md-row flex-col">
+                <div class="flex flex-md-row flex-col">                    
                     <div class="relative mb-4 me-md-2 col">
                         <label for="senha" class="leading-7 text-sm text-gray-400">Senha</label>
                         <input [(ngModel)]="model.senha" required type="password" id="senha" name="senha" class="w-full bg-opacity-20 focus:ring-2 focus:ring-yellow-400 rounded focus:border-yellow-500 text-gray-700 outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        <span class="text-sm text-gray-500">*Campo obrigatório.</span>
                     </div>
 
                     <div class="relative mb-4 ms-md-2 col">
                         <label for="senhaConfirmacao" class="leading-7 text-sm text-gray-400">Confirme sua senha</label>
                         <input [(ngModel)]="model.senhaConfirmacao" required type="password" id="senhaConfirmacao" name="senhaConfirmacao" class="w-full bg-opacity-20 focus:ring-2 focus:ring-yellow-400 rounded focus:border-yellow-500 text-gray-700 outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                    </div>
+                        <span class="text-sm text-gray-500">*Campo obrigatório.</span>                        
+                    </div>                     
                 </div>
 
                 <div class="col-12 mb-3">
                     <label for="foto">Foto de perfil de usuário:</label>
-                    <input class="form-control" type="file" (change)="onFileSelected($event)" accept="image/*">
-                </div>
+                    <div>
+                      <img [src]="imagemPreview" alt="Foto de Perfil" class="img-thumbnail mb-3" style="width: 150px; height: 150px; object-fit: cover;">
+                    </div>
+                    <input class="form-control" type="file" (change)="onFileSelected($event)" accept=".jpg,.jpeg">
+                    <span class="text-sm text-gray-500">*Campo obrigatório.</span>
+                    <div class="mb-2 text-danger">
+                      <strong>{{mensagem_error_foto}}</strong>
+                    </div>    
+                  </div>               
                 
-                <input type="submit" class="col-6 mt-3 mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg" value="Cadastrar">                                        
+                <input [disabled]="this.model.invalid" type="submit" class="col-6 mt-3 mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg" value="Cadastrar">                                        
                 
                 <p class="mt-4 mx-auto">Já possui uma conta? <a class=" link-login text-yellow-500 hover:text-yellow-600" routerLink="/login">Faça o login aqui!</a></p>
             </div>    

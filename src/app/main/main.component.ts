@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { environment } from 'src/environments/environment';
+import { EncryptedStorageService } from '../_guards/EncryptData';
 
 @Component({
   selector: 'app-main',
@@ -14,23 +15,24 @@ export class MainComponent implements OnInit {
   usuarioNome: string = '';  
   model: any = {};
   selectedFiles: File[] = [];
-  allItems: any[] = []; // Armazena todos os itens
-  filteredItems: any[] = []; // Armazena os itens filtrados
-  searchTitle: string = ''; // Armazena o título pesquisado
+  allItems: any[] = [];
+  filteredItems: any[] = [];
+  searchTitle: string = ''; 
 
   currentIndex: number = 0;
 
   constructor(
     private httpClient: HttpClient,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private encrypt: EncryptedStorageService
   ){}
 
   ngOnInit(): void {
     this.spinner.show();
-    const data = sessionStorage.getItem('auth_usuario');    
+    const data = this.encrypt.getItem('auth_usuario');    
     if (data != null) {      
-      this.usuarioId = JSON.parse(data).id;
-      this.usuarioNome = JSON.parse(data).nome;
+      this.usuarioId = data.id;
+      this.usuarioNome = data.nome;
     }    
     this.fetchItems();
   }  
