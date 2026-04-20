@@ -1,4 +1,5 @@
-export const environment = {    
-    listifyUsuario: 'http://felipeamorimdev-001-site1.dtempurl.com/api/listifyusuario',
-    listifyItem: 'http://felipeamorimdev-001-site1.dtempurl.com/api/listifyitem'        
-  };
+export const environment = {
+  apiBaseUrl: 'http://localhost:5000/api',
+  listifyUsuario: 'http://localhost:5000/api/listifyusuario',
+  listifyItem: 'http://localhost:5000/api/listifyitem'
+};

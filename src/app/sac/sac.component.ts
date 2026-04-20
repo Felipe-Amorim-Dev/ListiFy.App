@@ -29,7 +29,7 @@ onSubmit() {
     .set('email', this.contatoForm.get('email')?.value || '')
     .set('message', this.contatoForm.get('message')?.value || '');
 
-  this.httpClient.post('https://formsubmit.io/felipe.f.amorim@outlook.com', body.toString(), { headers })
+  this.httpClient.post('https://formsubmit.io/seu-email@exemplo.com', body.toString(), { headers })
     .subscribe(
       response => console.log("Response:", response),      
     );

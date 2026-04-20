@@ -5,7 +5,7 @@ import * as CryptoJS from 'crypto-js';
   providedIn: 'root',
 })
 export class EncryptedStorageService {
-  private secretKey = '4BDD6589-6EAB-4993-B7F1-4C4D75AF48C3';
+  private secretKey = 'CHANGE-ME-IN-LOCAL-ONLY';
 
   constructor() {}
 
