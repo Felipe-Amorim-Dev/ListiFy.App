@@ -1,3 +1,5 @@
+<img src="docs/Capa-ListiFy_App.png" width="350px" align="right"/>
+
 # 📝 ListiFy Web
 
 O ListiFy Web é uma aplicação web desenvolvida em Angular com foco na criação e gerenciamento de coleções, como CDs, DVDs e outros itens colecionáveis. A plataforma permite que o usuário organize seu acervo de forma prática, mantendo controle sobre seus itens e facilitando a visualização e gestão das coleções.
