@@ -9,7 +9,7 @@ O ListiFy Web é uma aplicação web desenvolvida em Angular com foco na criaç�
 
 ## Back-end da aplicação
 
-
+Back: https://github.com/Felipe-Amorim-Dev/ListiFy.Api
 
 ---
 
