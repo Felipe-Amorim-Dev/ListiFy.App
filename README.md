@@ -1,27 +1,61 @@
-# ListiFy — Angular application
+<p align="center"><img src="docs/Capa-ListiFy_App.png" alt="Capa do projeto ListiFy.App" width="100%" /></p>
 
-**Portfolio application / Projeto de portfólio.** Angular 16 frontend for organizing personal collections (for example CDs, DVDs and other collectibles). The backend is [ListiFy.Api](https://github.com/Felipe-Amorim-Dev/ListiFy.Api).
+<h1 align="center">📚 ListiFy App</h1>
 
-## Technology
-Angular, TypeScript, HTML/CSS, Bootstrap and Tailwind CSS dependencies are included in the project.
+<p align="center"><em>Interface Angular para organizar coleções pessoais.</em></p>
 
-## Local development
+<p align="center">🇧🇷 Português | 🇺🇸 <a href="README.en.md">English</a></p>
+
+<p align="center"><img src="https://img.shields.io/badge/licen%C3%A7a-MIT-006bed?style=flat-square" alt="MIT" /> <img src="https://img.shields.io/github/last-commit/Felipe-Amorim-Dev/ListiFy.App?style=flat-square&color=006bed" alt="Last commit" /></p>
+
+<p align="center"><a href="#sobre">Sobre</a> • <a href="#tecnologias">Tecnologias</a> • <a href="#como-rodar">Como rodar</a> • <a href="#licenca">Licença</a> • <a href="#autor">Autor</a></p>
+
+---
+
+<a id="sobre"></a>
+## 📖 Sobre
+
+Front-end do ListiFy desenvolvido com Angular 16, TypeScript, Bootstrap e Tailwind CSS. Consome a API mantida no repositório ListiFy.Api.
+
+## ✨ Funcionalidades
+
+- Interface web de coleções
+- Integração com API ASP.NET Core
+
+## 🛠️ Tecnologias
+
+![Angular 16](https://img.shields.io/badge/Angular_16-006bed?style=for-the-badge) ![TypeScript 5.1](https://img.shields.io/badge/TypeScript_5.1-006bed?style=for-the-badge) ![Bootstrap 5.3](https://img.shields.io/badge/Bootstrap_5.3-006bed?style=for-the-badge) ![Tailwind CSS 3.4](https://img.shields.io/badge/Tailwind_CSS_3.4-006bed?style=for-the-badge)
+
+## 📦 Pré-requisitos
+
+Node.js e npm compatíveis com a versão do Angular deste projeto.
+
+<a id="como-rodar"></a>
+## 🚀 Como rodar
+
 ```bash
 git clone https://github.com/Felipe-Amorim-Dev/ListiFy.App.git
 cd ListiFy.App
 npm ci
 npm start
 ```
-Typically opens at `http://localhost:4200`. Configure API URLs and start the backend separately; check environment settings in `src/environments` before running.
 
-## Build and tests
-```bash
-npm run build
-npm test
-```
-Tests may include Angular-generated specs; confirm behavior coverage and CI results rather than treating their presence as proof of reliability.
+http://localhost:4200
 
-## Scope and limitations
-This repository contains the **frontend only**. Authentication, persistence and network behavior depend on the backend and its local configuration. No production deployment or security guarantees are claimed.
+## 🔗 Repositórios relacionados
 
-**PT-BR:** Front-end de organização de coleções em Angular, integrado ao repositório ListiFy.Api. A execução ponta a ponta depende da configuração do backend.
+- [ListiFy.Api](https://github.com/Felipe-Amorim-Dev/ListiFy.Api) — Back-end ASP.NET Core
+
+<a id="licenca"></a>
+## 📄 Licença
+
+Distribuído sob a [licença MIT](LICENSE).
+
+<a id="autor"></a>
+## 👤 Autor
+
+**Felipe Figueiredo Amorim** — Desenvolvedor Full Stack.
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Felipe%20Amorim-0A66C2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/felipe-amorim-dev/) [![E-mail](https://img.shields.io/badge/E--mail-contato-006bed?style=for-the-badge)](mailto:felipe.f.amorim@outlook.com)
+
+<p align="center"><strong>Obrigado por visitar! / Thanks for visiting!</strong></p>
