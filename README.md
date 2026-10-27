@@ -46,6 +46,26 @@ http://localhost:4200
 
 - [ListiFy.Api](https://github.com/Felipe-Amorim-Dev/ListiFy.Api) — Back-end ASP.NET Core
 
+## 🏗️ Arquitetura e responsabilidades
+
+- AppModule registra componentes, rotas, formulários e HttpClient.
+- AuthenticationGuard controla acesso às rotas de cadastro, consulta e atualização de itens e à conta.
+- src/environments/environment.ts centraliza apiBaseUrl, listifyUsuario e listifyItem.
+
+### Fluxo de funcionamento
+
+1. Formulários Angular → comunicação HTTP → ListiFy.Api → SQL Server
+2. Componentes específicos implementam cadastro, catálogo, atualização de itens e perfil.
+
+### Execução local
+
+```bash
+npm ci
+npm start
+```
+
+Endereço do projeto: http://localhost:4200
+
 <a id="licenca"></a>
 ## 📄 Licença
 
